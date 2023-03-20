@@ -1,34 +1,23 @@
-import { render, screen } from '@testing-library/react';
-import React from react;
+import React from 'react'
 
-describe('RelativeList', () => {
-  let relatives;
+const relatives = [
+  {id: "relativeListItem1", name: "Mama"},
+  {id: "relativeListItem2", name: "Pisima"},
+  {id: "relativeListItem3", name: "Choto Pisima"},
+  {id: "relativeListItem4", name: "Mejo Pisima"},
+]
 
-  beforeEach(() => {
-    relatives = [
-      { id: "relativeListItem1", name: "John" },
-      { id: "relativeListItem2", name: "Jane" },
-      { id: "relativeListItem3", name: "Bob" },
-      { id: "relativeListItem4", name: "Alice" }
-    ];
-    
-    render(<RelativeList relatives={relatives} />);
-  });
-
-  it('should check length of ordered list of relatives', () => {
-    const relativeList = screen.getByRole('list', { name: /relatives/i });
-    expect(relativeList.children.length).toEqual(relatives.length);
-  });
-});
-
-function App({ relatives }) {
+const App = ({relatives}) => {
   return (
-    <ol key="relativeList" aria-label="Relatives">
-      {relatives.map(relative => (
-        <li key={relative.id}>{relative.name}</li>
-      ))}
-    </ol>
-  );
+    <div id="main">
+               {/* Do not remove the main div */}
+               <ol key="relativeList" aria-label="Relatives">
+                  {relatives.map((relative)=> {
+                    <li key={relative.id}>{relative.name}</li>
+                  })}
+               </ol>
+    </div>
+  )
 }
 
-export default App;
+export default App
