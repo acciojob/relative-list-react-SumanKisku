@@ -1,14 +1,20 @@
 import React from 'react'
 
-const App = () => {
+const relatives = [
+  {id: "relativeListItem1", name: "Mama"},
+  {id: "relativeListItem2", name: "Pisima"},
+  {id: "relativeListItem3", name: "Choto Pisima"},
+  {id: "relativeListItem4", name: "Mejo Pisima"},
+]
+
+const App = ({relatives}) => {
   return (
     <div id="main">
                {/* Do not remove the main div */}
-               <ol key="relativeList">
-                <li key="relativeListItem1">Mama</li>
-                <li key="relativeListItem2">Pisima</li>
-                <li key="relativeListItem3">Masi</li>
-                <li key="relativeListItem4">Jamai Babu</li>
+               <ol key="relativeList" aria-label="Relatives">
+                  {relatives.map((relative)=> {
+                    <li key={relative.id}>{relative.name}</li>
+                  })}
                </ol>
     </div>
   )
